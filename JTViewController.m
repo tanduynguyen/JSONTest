@@ -29,14 +29,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.name.text = [[self dictionary] objectForKey:@"name"];
-    self.address.text = [[self dictionary] objectForKey:@"address"];
-    self.dob.text = [[self dictionary] objectForKey:@"dob"];
+    self.name.text = self.jTPerson.name;
+    self.address.text = self.jTPerson.address;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"ddmmYYYY"];
     
-    NSDate *dobData = [dateFormatter dateFromString:[[self dictionary] objectForKey:@"dob"]];
+    NSDate *dobData = [dateFormatter dateFromString:self.jTPerson.dob];
     
     [dateFormatter setDateFormat:@"dd/mm/YYYY"];
     self.dob.text = [dateFormatter  stringFromDate:dobData];

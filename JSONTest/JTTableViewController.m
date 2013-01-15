@@ -7,16 +7,28 @@
 //
 
 #import "JTTableViewController.h"
-#import "JSONKit.h"
+#import "JTPerson.h"
 #import "JTViewController.h"
+#import "JTDownloader.h"
 
 @interface JTTableViewController ()
 
-@property (nonatomic, strong) NSArray *tableArray;
+@property (strong) NSMutableArray *entries;
+@property (nonatomic, strong) JTDownloader *downloader;
 
 @end
 
 @implementation JTTableViewController
+
+
+- (JTDownloader *)downloader
+{
+    if (!_downloader) {
+        _downloader = [[JTDownloader alloc] init];
+    }
+    
+    return _downloader;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,26 +43,23 @@
 {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"name" ofType:@"json"];
+    [self.downloader loadData];
     
-    NSError *error;
-    NSString *jsonString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    
-    if (error) {
-        return;
+    [self.downloader addObserver:self forKeyPath:@"downloadFinish" options:NSKeyValueObservingOptionInitial context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"downloadFinish"] && self.downloader.downloadFinish == YES) {
+        NSData *data = [self.downloader.data copy];
+        
+        NSError *error;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        
+        self.entries = [[[json objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"];
+              
+        [self.tableView reloadData];
     }
-    
-    id obj = [jsonString objectFromJSONString];
-    
-    if ([obj isKindOfClass:[NSArray class]]) {
-        self.tableArray = [obj mutableCopy];
-    }
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,32 +81,32 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.tableArray.count;
+    return self.entries.count;
 }
 
 - (NSString *)getMyDataForRow:(NSInteger)row inSection:(NSInteger)section
 {
     NSString *str;
-    id obj = [self.tableArray objectAtIndex:row];        
+    id obj = [self.entries objectAtIndex:row];
     
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *tmp = obj;
         
-        NSString *name = [tmp objectForKey:@"name"];
-        str = [NSString stringWithFormat:@"%@", name];
+        //an array of objects: title, publishdate, url, image_url, content
+        str = [NSString stringWithFormat:@"%@", tmp];
     }
     return str;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(JTViewController *)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
-    id obj = [self.tableArray objectAtIndex:indexPath.row];
+    id obj = [self.entries objectAtIndex:indexPath.row];
     
-    if ([obj isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *tmp = obj;
-        [segue.destinationViewController setDictionary:tmp];
+    if ([obj isKindOfClass:[JTPerson class]]) {
+     //   JTPerson *tmp = obj;
+        //[segue.destinationViewController setJTPerson:tmp];
         
     }
 }

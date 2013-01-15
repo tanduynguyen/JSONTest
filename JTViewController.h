@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JTPerson.h"
 
 @interface JTViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *dictionary;
+@property (strong, nonatomic) IBOutlet JTPerson *jTPerson;
+
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *address;
 @property (strong, nonatomic) IBOutlet UILabel *dob;

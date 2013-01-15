@@ -21,6 +21,10 @@
 		8D91CA5016A505EE001EF0D7 /* JTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA4F16A505EE001EF0D7 /* JTTableViewController.m */; };
 		8D91CA5616A508EB001EF0D7 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA5516A508EB001EF0D7 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8D91CA5916A5148E001EF0D7 /* JTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA5816A5148E001EF0D7 /* JTViewController.m */; };
+		8D91CA5B16A54017001EF0D7 /* google_news.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D91CA5A16A54017001EF0D7 /* google_news.json */; };
+		8D91CA5E16A5432E001EF0D7 /* JTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA5D16A5432E001EF0D7 /* JTPerson.m */; };
+		8D91CA6116A54602001EF0D7 /* JTJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA6016A54602001EF0D7 /* JTJModel.m */; };
+		8D91CA6816A55DBA001EF0D7 /* JTDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D91CA6716A55DBA001EF0D7 /* JTDownloader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,13 @@
 		8D91CA5516A508EB001EF0D7 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		8D91CA5716A5148E001EF0D7 /* JTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTViewController.h; path = ../JTViewController.h; sourceTree = "<group>"; };
 		8D91CA5816A5148E001EF0D7 /* JTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTViewController.m; path = ../JTViewController.m; sourceTree = "<group>"; };
+		8D91CA5A16A54017001EF0D7 /* google_news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_news.json; sourceTree = "<group>"; };
+		8D91CA5C16A5432E001EF0D7 /* JTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTPerson.h; sourceTree = "<group>"; };
+		8D91CA5D16A5432E001EF0D7 /* JTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTPerson.m; sourceTree = "<group>"; };
+		8D91CA5F16A54602001EF0D7 /* JTJModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTJModel.h; sourceTree = "<group>"; };
+		8D91CA6016A54602001EF0D7 /* JTJModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTJModel.m; sourceTree = "<group>"; };
+		8D91CA6616A55DBA001EF0D7 /* JTDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTDownloader.h; sourceTree = "<group>"; };
+		8D91CA6716A55DBA001EF0D7 /* JTDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTDownloader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +111,12 @@
 				8D91CA2B16A5002F001EF0D7 /* Supporting Files */,
 				8D91CA4E16A505EE001EF0D7 /* JTTableViewController.h */,
 				8D91CA4F16A505EE001EF0D7 /* JTTableViewController.m */,
+				8D91CA5C16A5432E001EF0D7 /* JTPerson.h */,
+				8D91CA5D16A5432E001EF0D7 /* JTPerson.m */,
+				8D91CA5F16A54602001EF0D7 /* JTJModel.h */,
+				8D91CA6016A54602001EF0D7 /* JTJModel.m */,
+				8D91CA6616A55DBA001EF0D7 /* JTDownloader.h */,
+				8D91CA6716A55DBA001EF0D7 /* JTDownloader.m */,
 			);
 			path = JSONTest;
 			sourceTree = "<group>";
@@ -115,6 +132,7 @@
 				8D91CA3816A5002F001EF0D7 /* Default@2x.png */,
 				8D91CA3A16A5002F001EF0D7 /* Default-568h@2x.png */,
 				8D91CA4716A50053001EF0D7 /* name.json */,
+				8D91CA5A16A54017001EF0D7 /* google_news.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,6 +204,7 @@
 				8D91CA3B16A5002F001EF0D7 /* Default-568h@2x.png in Resources */,
 				8D91CA3E16A5002F001EF0D7 /* MainStoryboard.storyboard in Resources */,
 				8D91CA4816A50053001EF0D7 /* name.json in Resources */,
+				8D91CA5B16A54017001EF0D7 /* google_news.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +220,9 @@
 				8D91CA5016A505EE001EF0D7 /* JTTableViewController.m in Sources */,
 				8D91CA5616A508EB001EF0D7 /* JSONKit.m in Sources */,
 				8D91CA5916A5148E001EF0D7 /* JTViewController.m in Sources */,
+				8D91CA5E16A5432E001EF0D7 /* JTPerson.m in Sources */,
+				8D91CA6116A54602001EF0D7 /* JTJModel.m in Sources */,
+				8D91CA6816A55DBA001EF0D7 /* JTDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
