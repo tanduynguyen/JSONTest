@@ -7,6 +7,7 @@
 //
 
 #import "JTViewController.h"
+#import "JTPerson.h"
 
 @interface JTViewController ()
 
@@ -29,16 +30,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.name.text = self.jTPerson.name;
-    self.address.text = self.jTPerson.address;
+    JTPerson *person = [[JTPerson alloc] initWithDictionary:self.dictionary];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"ddmmYYYY"];
+    self.viewTitle.text = person.title;
     
-    NSDate *dobData = [dateFormatter dateFromString:self.jTPerson.dob];
+    self.viewPuplishDate.text = person.publishDate;
     
-    [dateFormatter setDateFormat:@"dd/mm/YYYY"];
-    self.dob.text = [dateFormatter  stringFromDate:dobData];
+    [self.viewContent loadHTMLString:person.content baseURL:nil];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"ddmmYYYY"];
+//    
+//    NSDate *dobData = [dateFormatter dateFromString:self.person.dob];
+//    
+//    [dateFormatter setDateFormat:@"dd/mm/YYYY"];
+//    self.dob.text = [dateFormatter  stringFromDate:dobData];
 }
 
 

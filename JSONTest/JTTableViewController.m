@@ -56,7 +56,7 @@
         NSError *error;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
-        self.entries = [[[json objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"];
+        self.entries = [[[[json objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"] mutableCopy];
               
         [self.tableView reloadData];
     }
@@ -91,9 +91,9 @@
     
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *tmp = obj;
-        
+        JTPerson *p = [[JTPerson alloc] initWithDictionary:tmp];
         //an array of objects: title, publishdate, url, image_url, content
-        str = [NSString stringWithFormat:@"%@", tmp];
+        str = [NSString stringWithFormat:@"%@", p.title];
     }
     return str;
 }
@@ -104,9 +104,9 @@
     
     id obj = [self.entries objectAtIndex:indexPath.row];
     
-    if ([obj isKindOfClass:[JTPerson class]]) {
-     //   JTPerson *tmp = obj;
-        //[segue.destinationViewController setJTPerson:tmp];
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *tmp = obj;
+        [segue.destinationViewController setDictionary:tmp];
         
     }
 }

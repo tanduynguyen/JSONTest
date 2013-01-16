@@ -15,14 +15,17 @@
 
 @implementation JTPerson
 
+
+
 - (id)initWithDictionary:(NSDictionary *)personDictionary
 {
     self = [super init];
     
     if (self) {
-        self.name = [personDictionary objectForKey:@"name"];
-        self.address = [personDictionary objectForKey:@"address"];
-        self.dob = [personDictionary objectForKey:@"dob"];
+        self.title = [personDictionary objectForKey:@"title"];
+        self.content = [personDictionary objectForKey:@"content"];
+        self.publishDate = [personDictionary objectForKey:@"publishedDate"];
+     //   self.dob = [personDictionary objectForKey:@"dob"];
     }
     
     return self;

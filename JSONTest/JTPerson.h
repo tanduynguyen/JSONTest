@@ -10,9 +10,11 @@
 
 @interface JTPerson : NSObject
 
-@property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *address;
-@property (nonatomic,strong) NSString *dob;
+@property (nonatomic,strong) NSString *title;
+@property (nonatomic,strong) NSString *publishDate;
+@property (nonatomic,strong) NSString *link;
+@property (nonatomic,strong) NSString *content;
+@property (nonatomic,strong) NSString *category;
 
 - (id)initWithDictionary:(NSDictionary *)personDictionary;
 
