@@ -14,7 +14,7 @@
 {
     // Override point for customization after application launch.
     //[[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"sand.gif"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"sand.gif"] forBarMetrics:UIBarStyleDefault];
     
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
@@ -27,6 +27,10 @@
       [UIFont fontWithName:@"NoteWorthy" size:17.0],
       UITextAttributeFont,
       nil]];
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.93f green:0.76f blue:0.91f alpha:0.60f]];
+   // [[UITabBarItem appearance] setTitleTextAttributes:textAttributesNormal forState:UIControlStateNormal];
+   // [[UITabBarItem appearance] setTitleTextAttributes:textAttributesSelected forState:UIControlStateSelected];
     
     return YES;
 }

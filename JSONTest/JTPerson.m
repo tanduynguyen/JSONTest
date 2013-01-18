@@ -34,8 +34,7 @@
         self.userName = [personDictionary objectForKey:@"userName"];
         self.role = [personDictionary objectForKey:@"role"];
         self.like = [personDictionary objectForKey:@"like"];
-        self.dislike = [personDictionary objectForKey:@"dislike"];
-        
+        self.dislike = [personDictionary objectForKey:@"dislike"];        
         self.timeStamp = [personDictionary objectForKey:@"timeStamp"];
         
         

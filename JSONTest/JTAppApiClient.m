@@ -8,8 +8,6 @@
 
 #import "JTAppApiClient.h"
 
-static NSString * const JTAppAPIBaseURLString = @"https://api.mongolab.com/";
-static NSString * const JTAppAPIToken = @"";
 
 @implementation JTAppApiClient
 
@@ -18,7 +16,7 @@ static NSString * const JTAppAPIToken = @"";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __sharedInstance = [[JTAppApiClient alloc] initWithBaseURL:
-                            [NSURL URLWithString:JTAppAPIBaseURLString]];
+                            [NSURL URLWithString:kAppAPIBaseURLString]];
     });
     
     return __sharedInstance;
@@ -28,7 +26,7 @@ static NSString * const JTAppAPIToken = @"";
     self = [super initWithBaseURL:url];
     if (self) {
         //custom settings
-        [self setDefaultHeader:@"x-api-token" value:JTAppAPIToken];
+        [self setDefaultHeader:@"x-api-token" value:kAppAPIToken];
         
         
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];

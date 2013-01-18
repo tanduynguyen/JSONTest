@@ -60,10 +60,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    cell = [self.tableView dequeueReusableCellWithIdentifier:@"PersonDetails"];
+    NSString *cellIdentifier = @"PersonDetails";
+    if (indexPath.row % 2 == 1) {
+        cellIdentifier = @"PersonDetailsAlt";
+    }
+    cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:@"PersonDetails"];
+                                      reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     switch (indexPath.row) {
@@ -145,9 +150,8 @@
             break;
     }
     
-    //UILabel *content = (UILabel *)[[(UITableViewCell *)[(UITableView *)self cellForRowAtIndexPath:indexPath] contentView] viewWithTag:1];
-    
-    //text = content.text; //self.person.like; //[items objectAtIndex:indexPath.row];
+    //UILabel *content = (UILabel *)[[(UITableViewCell *)[(UITableView *)self cellForRowAtIndexPath:indexPath] contentView] viewWithTag:1];    
+    //text = [items objectAtIndex:indexPath.row];
         
     // Get a CGSize for the width and, effectively, unlimited height
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
@@ -156,7 +160,9 @@
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
         
     // Get the height of our measurement
-    height = size.height;
+    if (size.height > height) {
+        height = size.height;
+    }
     
         
     // return the height, with a bit of extra padding in
