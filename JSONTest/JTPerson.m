@@ -15,6 +15,15 @@
 
 @implementation JTPerson
 
+@synthesize timeStamp = _timeStamp;
+
+- (void) setTimeStamp:(NSDate *)timeStamp
+{
+    if (!_timeStamp) {
+        _timeStamp = [[NSDate alloc] init];
+    }
+    _timeStamp = timeStamp;
+}
 
 - (id)initWithDictionary:(NSDictionary *)personDictionary
 {
@@ -23,10 +32,11 @@
     if (self) {
         self.name = [personDictionary objectForKey:@"name"];
         self.userName = [personDictionary objectForKey:@"userName"];
-        self.timeStamp = [personDictionary objectForKey:@"timeStamp"];
         self.role = [personDictionary objectForKey:@"role"];
         self.like = [personDictionary objectForKey:@"like"];
         self.dislike = [personDictionary objectForKey:@"dislike"];
+        
+        self.timeStamp = [personDictionary objectForKey:@"timeStamp"];
         
         
 //        self.title = [personDictionary objectForKey:@"title"];

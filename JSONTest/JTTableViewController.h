@@ -13,6 +13,5 @@
 
 @property (strong, nonatomic) NSMutableArray *filteredArray;
 
-@property (strong, nonatomic) IBOutlet UISearchBar *mySearchBar;
 
 @end
