@@ -16,6 +16,13 @@
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *category;
 
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *userName;
+@property (nonatomic,strong) NSDate *timeStamp;
+@property (nonatomic,strong) NSString *role;
+@property (nonatomic,strong) NSString *like;
+@property (nonatomic,strong) NSString *dislike;
+
 - (id)initWithDictionary:(NSDictionary *)personDictionary;
 
 @end

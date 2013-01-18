@@ -6,14 +6,20 @@
 //  Copyright (c) 2013 2359media. All rights reserved.
 //
 
-#import "JTViewController.h"
-#import "JTPerson.h"
+#import "JTDetailsViewController.h"
 
 @interface JTViewController ()
 
 @end
 
 @implementation JTViewController
+
+- (JTPerson *)person {
+    if (!_person) {
+        _person = [[JTPerson alloc] init];
+    }
+    return _person;
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,13 +36,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    JTPerson *person = [[JTPerson alloc] initWithDictionary:self.dictionary];
+    self.viewName.text = self.person.name;    
+    self.viewUserName.text = self.person.userName;
+    self.viewTimeStamp.text = self.person.timeStamp;
+    self.viewRole.text = self.person.role;
+    self.viewLike.text = self.person.like;
+    self.viewDislike.text = self.person.dislike;
     
-    self.viewTitle.text = person.title;
     
-    self.viewPuplishDate.text = person.publishDate;
+    //NSMutableString *mu = [NSMutableString stringWithString:person.content];
     
-    [self.viewContent loadHTMLString:person.content baseURL:nil];
+    
+   // [self.viewContent loadHTMLString:person.content baseURL:nil];
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //    [dateFormatter setDateFormat:@"ddmmYYYY"];
 //    
