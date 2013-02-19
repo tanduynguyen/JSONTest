@@ -13,6 +13,8 @@
 #import "AFNetworking.h"
 #import "JTAppApiClient.h"
 
+#import "ADLivelyTableView.h"
+
 @interface JTTableViewController ()
 
 
@@ -48,6 +50,8 @@
 {
     [super viewDidLoad];
     
+    ADLivelyTableView * livelyTableView = (ADLivelyTableView *)self.tableView;
+    livelyTableView.initialCellTransformBlock = ADLivelyTransformFan;
     
 //    NSURL *url = [NSURL URLWithString:@"https://search.twitter.com/search.json?q=ipad"];
 //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -136,7 +140,6 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     int rows = 0;
-    // Return the number of rows in the section.
     
     if (tableView == self.tableView) {
         rows = self.results.count;
@@ -200,6 +203,8 @@
         cell.backgroundColor = [UIColor colorWithRed:0.53f green:0.76f blue:0.70f alpha:1.00f];
     }
 }
+
+
 
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {

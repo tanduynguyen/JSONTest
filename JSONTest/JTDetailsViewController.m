@@ -106,7 +106,7 @@
     }
     
     [cell.detailTextLabel setNumberOfLines:0];
-    [cell.detailTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+  //  [cell.detailTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
     
     return cell;
 }
